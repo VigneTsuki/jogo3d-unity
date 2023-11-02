@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        moedas = 0;
     }
 
     // Update is called once per frame
@@ -44,15 +44,18 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void DescontarMoeda()
+    public void ContarMoedas()
     {
-        moedas--;
-        if(moedas <= 0 && SceneManager.GetActiveScene().name == "FaseUm")
+        moedas+=1;
+
+        if(moedas == 3 && SceneManager.GetActiveScene().name == "FaseUm")
         {
+            moedas = 0;
             SceneManager.LoadScene("FaseUm");
         }
-        else if (moedas <= 0 && SceneManager.GetActiveScene().name != "FaseUm")
+        else if (moedas == 3 && SceneManager.GetActiveScene().name != "FaseUm")
         {
+            moedas = 0;
             SceneManager.LoadScene("FaseUm");
         }
     }
