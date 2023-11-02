@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     public int moedas;
     public static GameController instance;
-    private int vidas;
+    public int vidas;
 
     /// <summary>
     /// Não perder o controller ao resetar a tela
@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         else if (moedas == 10 && SceneManager.GetActiveScene().name != "FaseUm")
         {
             moedas = 0;
-            SceneManager.LoadScene("FaseUm");
+            SceneManager.LoadScene("Vitoria");
         }
     }
 
@@ -67,7 +67,8 @@ public class GameController : MonoBehaviour
         vidas -= 1;
         if(vidas == 0)
         {
-            Debug.Log("morreu");
+            moedas = 0;
+            SceneManager.LoadScene("Gameover");
         }
         else
         {
