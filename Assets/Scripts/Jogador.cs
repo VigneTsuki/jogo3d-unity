@@ -1,30 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Jogador : MonoBehaviour
 {
-    public float velocidade;
+    public CharacterController oCharacterController;
+    public float velocidadeDoJogador;
     public Rigidbody rb;
-    private float movimentoX;
-    private float movimentoZ;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float gravidadeDoJogador;
+    private Vector3 velocidadeDeQueda;
 
-    // Update is called once per frame
     void Update()
     {
-        MovimentarJogador();
+        MoverJogador();
+        AplicarGravidade();
     }
 
-    private void MovimentarJogador()
+    private void MoverJogador()
     {
-        movimentoX = Input.GetAxis("Horizontal") * velocidade;
-        movimentoZ = Input.GetAxis("Vertical") * velocidade;
+        float movimentoX = Input.GetAxis("Horizontal");
+        float movimentoZ = Input.GetAxis("Vertical");
 
-        rb.AddForce(movimentoX, 0f, movimentoZ);
+        Vector3 movimentoFinal = transform.right * movimentoX + transform.forward * movimentoZ;
+
+        oCharacterController.Move(movimentoFinal * velocidadeDoJogador * Time.deltaTime);
+    }
+
+    private void AplicarGravidade()
+    {
+        velocidadeDeQueda.y += gravidadeDoJogador * Time.deltaTime;
+        oCharacterController.Move(velocidadeDeQueda * Time.deltaTime);
     }
 }

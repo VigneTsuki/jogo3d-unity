@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
         moedas--;
         if(moedas <= 0 && SceneManager.GetActiveScene().name == "FaseUm")
         {
-            SceneManager.LoadScene("FaseDois");
+            SceneManager.LoadScene("FaseUm");
         }
         else if (moedas <= 0 && SceneManager.GetActiveScene().name != "FaseUm")
         {
