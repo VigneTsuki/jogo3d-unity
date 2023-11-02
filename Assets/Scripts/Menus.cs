@@ -14,7 +14,8 @@ public class Menus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().name == "Gameover")
+        if (Input.GetKeyDown(KeyCode.R) && (SceneManager.GetActiveScene().name == "Gameover" ||
+            SceneManager.GetActiveScene().name == "Vitoria"))
         {
             GameController.instance.moedas = 0;
             GameController.instance.vidas = 3;

@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moedas: 0
+  vidas: 0
 --- !u!4 &328289250
 Transform:
   m_ObjectHideFlags: 0
@@ -1528,7 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corpoDoJogador: {fileID: 1337070120}
-  sensibilidadeDoMouse: 1000
+  sensibilidadeDoMouse: 150
 --- !u!1 &1307279927
 GameObject:
   m_ObjectHideFlags: 0
