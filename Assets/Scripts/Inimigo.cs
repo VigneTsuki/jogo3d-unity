@@ -20,7 +20,7 @@ public class Inimigo : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameController.instance.ReiniciarFase();
+            GameController.instance.DescontarVida();
         }
     }
 }

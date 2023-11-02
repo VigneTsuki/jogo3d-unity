@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     public int moedas;
     public static GameController instance;
+    private int vidas;
 
     /// <summary>
     /// Não perder o controller ao resetar a tela
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        vidas = 3;
         moedas = 0;
     }
 
@@ -48,25 +50,40 @@ public class GameController : MonoBehaviour
     {
         moedas+=1;
 
-        if(moedas == 3 && SceneManager.GetActiveScene().name == "FaseUm")
+        if(moedas == 10 && SceneManager.GetActiveScene().name == "FaseUm")
         {
             moedas = 0;
             SceneManager.LoadScene("FaseUm");
         }
-        else if (moedas == 3 && SceneManager.GetActiveScene().name != "FaseUm")
+        else if (moedas == 10 && SceneManager.GetActiveScene().name != "FaseUm")
         {
             moedas = 0;
             SceneManager.LoadScene("FaseUm");
+        }
+    }
+
+    public void DescontarVida()
+    {
+        vidas -= 1;
+        if(vidas == 0)
+        {
+            Debug.Log("morreu");
+        }
+        else
+        {
+            ReiniciarFase();
         }
     }
 
     public void ReiniciarFase()
     {
+        moedas = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void SairPartida()
     {
+        moedas = 0;
         Application.Quit();
     }
 }
